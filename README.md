@@ -1,2 +1,2 @@
 # absocial-chat
-Chat for AbSocial
+Chat client for AbSocial website
