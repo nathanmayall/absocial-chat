@@ -1,0 +1,37 @@
+{
+  "name": "absocial-chat",
+  "version": "1.0.0",
+  "description": "Chat client for AbSocial",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathanmayall/absocial-chat.git"
+  },
+  "keywords": [
+    "chat",
+    "client",
+    "social",
+    "media"
+  ],
+  "author": "Nathan Mayall <nathanmayall@icloud.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathanmayall/absocial-chat/issues"
+  },
+  "homepage": "https://github.com/nathanmayall/absocial-chat#readme",
+  "dependencies": {
+    "apollo-server": "^2.18.2",
+    "bcryptjs": "^2.4.3",
+    "graphql": "^15.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
