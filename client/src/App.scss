@@ -2,8 +2,11 @@ $blue: #1877f2;
 $green: #42b72a;
 
 $border-radius: 0;
+$paragraph-margin-bottom: 0;
 
-@import "~bootstrap/scss/bootstrap";
+$gray-600: rgb(245, 245, 245);
+
+@import '~bootstrap/scss/bootstrap';
 
 body {
   min-height: 100vh;
