@@ -1,9 +1,9 @@
-import React, { useEffect, useState, Fragment } from 'react'
-import { Row, Col, Button, Image } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import { gql, useQuery, useLazyQuery } from '@apollo/client'
+import React, { useEffect, useState, Fragment } from "react";
+import { Row, Col, Button, Image } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { gql, useQuery, useLazyQuery } from "@apollo/client";
 
-import { useAuthDispatch } from '../context/auth'
+import { useAuthDispatch } from "../context/auth";
 
 const GET_USERS = gql`
   query getUsers {
@@ -20,7 +20,7 @@ const GET_USERS = gql`
       }
     }
   }
-`
+`;
 
 const GET_MESSAGES = gql`
   query getMessages($from: String!) {
@@ -32,37 +32,37 @@ const GET_MESSAGES = gql`
       createdAt
     }
   }
-`
+`;
 
 export default function Home({ history }) {
-  const dispatch = useAuthDispatch()
-  const [selectedUser, setSelectedUser] = useState(null)
+  const dispatch = useAuthDispatch();
+  const [selectedUser, setSelectedUser] = useState(null);
 
   const logout = () => {
-    dispatch({ type: 'LOGOUT' })
-    history.push('/login')
-  }
+    dispatch({ type: "LOGOUT" });
+    history.push("/login");
+  };
 
-  const { loading, data, error } = useQuery(GET_USERS)
+  const { loading, data, error } = useQuery(GET_USERS);
 
   const [
     getMessages,
     { loading: messagesLoading, data: messagesData },
-  ] = useLazyQuery(GET_MESSAGES)
+  ] = useLazyQuery(GET_MESSAGES);
 
   useEffect(() => {
     if (selectedUser) {
-      getMessages({ variables: { from: selectedUser } })
+      getMessages({ variables: { from: selectedUser } });
     }
-  }, [selectedUser])
+  }, [selectedUser]);
 
-  if (messagesData) console.log(messagesData.getMessages)
+  if (messagesData) console.log(messagesData.getMessages);
 
-  let usersMarkup
+  let usersMarkup;
   if (!data || loading) {
-    usersMarkup = <p>Loading..</p>
+    usersMarkup = <p>Loading..</p>;
   } else if (data.getUsers.length === 0) {
-    usersMarkup = <p>No users have joined yet</p>
+    usersMarkup = <p>No users have joined yet</p>;
   } else if (data.getUsers.length > 0) {
     usersMarkup = data.getUsers.map((user) => (
       <div
@@ -74,18 +74,18 @@ export default function Home({ history }) {
           src={user.imageUrl}
           roundedCircle
           className="mr-2"
-          style={{ width: 50, height: 50, objectFit: 'cover' }}
+          style={{ width: 50, height: 50, objectFit: "cover" }}
         />
         <div>
           <p className="text-success">{user.username}</p>
           <p className="font-weight-light">
             {user.latestMessage
               ? user.latestMessage.content
-              : 'You are now connected!'}
+              : "You are now connected!"}
           </p>
         </div>
       </div>
-    ))
+    ));
   }
   return (
     <Fragment>
@@ -115,5 +115,5 @@ export default function Home({ history }) {
         </Col>
       </Row>
     </Fragment>
-  )
+  );
 }
