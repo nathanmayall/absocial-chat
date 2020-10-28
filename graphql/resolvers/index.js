@@ -1,5 +1,5 @@
-const userResolvers = require('./users')
-const messageResolvers = require('./messages')
+const userResolvers = require("./users");
+const messageResolvers = require("./messages");
 
 module.exports = {
   Message: {
@@ -13,4 +13,7 @@ module.exports = {
     ...userResolvers.Mutation,
     ...messageResolvers.Mutation,
   },
-}
+  Subscription: {
+    ...messageResolvers.Subscription,
+  },
+};
