@@ -25,6 +25,7 @@ const GET_USERS = gql`
 export default function Users() {
   const dispatch = useMessageDispatch();
   const { users } = useMessageState();
+
   const selectedUser = users?.find((u) => u.selected === true)?.username;
 
   const { loading } = useQuery(GET_USERS, {
