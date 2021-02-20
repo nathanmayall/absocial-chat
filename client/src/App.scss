@@ -1,6 +1,8 @@
 $blue: #1877f2;
 $green: #42b72a;
 
+$spacer: 1rem;
+
 $border-radius: 0;
 $paragraph-margin-bottom: 0;
 
@@ -77,4 +79,9 @@ body {
   right: -10px;
   bottom: -25px;
   font-size: 0.9rem;
+}
+
+.py-1 {
+  padding-top: ($spacer * 0.25) !important;
+  padding-bottom: ($spacer * 0.25) !important;
 }
