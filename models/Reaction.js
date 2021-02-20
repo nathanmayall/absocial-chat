@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ User, Message }) {
       // define association here
-      this.belongsTo(Message, { foreignKey: "messageId" }); // MessageId
+      this.belongsTo(Message, { foreignKey: "messageId" }); // MessageId, messageId case sensitive??
       this.belongsTo(User, { foreignKey: "userId" });
     }
   }

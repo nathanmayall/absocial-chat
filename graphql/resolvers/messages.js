@@ -27,8 +27,17 @@ module.exports = {
             to: { [Op.in]: usernames },
           },
           order: [["createdAt", "DESC"]],
-          include: [{ model: Reaction, as: "reactions" }],
+          include: [{ model: Reaction, as: "reactions" }], //:( this breaks things
         });
+
+        /** #BUG #3
+         *  so the include line above fetches the reactions attached to the messages
+         * BUT sequelize thinks the table is called reactions.MessageId
+         * it's actually reactions.messageId (postgres is case sensitive)
+         * I've made sure in the Reaction model the foreign key it's
+         * associated with is explicitly 'messageId' but it doesn't work.
+         * so I'm pretty stuck.
+         */
 
         return messages;
       } catch (err) {
@@ -47,7 +56,7 @@ module.exports = {
         if (!recipient) {
           throw new UserInputError("User not found");
         } else if (recipient.username === user.username) {
-          throw new UserInputError("You cant message yourself");
+          throw new UserInputError("You cannot message yourself");
         }
 
         if (content.trim() === "") {
