@@ -1,5 +1,5 @@
 const bcrypt = require("bcryptjs");
-const { UserInputError, AuthenticationError } = require("apollo-server");
+const { UserInputError, AuthenticationError } = require("apollo-server-express");
 const jwt = require("jsonwebtoken");
 const { Op } = require("sequelize");
 

@@ -2,8 +2,10 @@ const {
   UserInputError,
   AuthenticationError,
   ForbiddenError,
-  withFilter,
-} = require("apollo-server");
+} = require("apollo-server-express");
+
+const { withFilter } = require("graphql-subscriptions");
+
 const { Op } = require("sequelize");
 
 const { Message, User, Reaction } = require("../../models");
