@@ -34,10 +34,7 @@ httpLink = authLink.concat(httpLink);
 const host = window.location.host;
 
 const wsLink = new WebSocketLink({
-  uri:
-    process.env.NODE_ENV === "production"
-      ? `wss://${host}/graphql/`
-      : "ws://localhost:4000",
+  uri: `wss://${host}/graphql/`,
   options: {
     reconnect: true,
     connectionParams: {
